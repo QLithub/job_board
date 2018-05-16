@@ -1,7 +1,8 @@
 class JobsController < ApplicationController
+  before_action :set_job, only: [:edit, :update]
 
   def index
-
+    @jobs = Job.all
   end
 
   def new
@@ -23,8 +24,23 @@ class JobsController < ApplicationController
     # debugger # this is a breakpoint, the server will stop when it hits this, and let us debug
   end
 
+  def edit
+  end
+
+  def update
+    if @job.update(job_params)
+      redirect_to jobs_path
+    else
+      render 'edit'
+    end
+  end
+
   private
     def job_params
       params.require(:job).permit(:title, :description)
+    end
+
+    def set_job
+      @job = Job.find(params[:id])
     end
 end
