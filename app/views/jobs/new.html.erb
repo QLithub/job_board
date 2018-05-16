@@ -1,9 +1,10 @@
 <h1>Add a Job</h1>
-
+  <!-- Here is where you will want to add the error mesages you recive from the debugger -->
+  <!-- look in the errors array -->
 <%= form_for @job do |f| %>
   <div>
     <%= f.label :title, "Job Title" %>
-    <%= f.text_field :title %>
+    <%= f.text_field :title,class: "form-control" %>
   </div>
 
   <div>
