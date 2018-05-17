@@ -12,10 +12,14 @@
     <% @jobs.each do |job| %>
     <tr>
       <th scope="row"><%= job.id %></th>
-      <td><%= job.title %></td>
+      <td><%= link_to job.title, job_path(job) %></td>
       <td><%= job.description %></td>
-      <td><%= link_to "Edit Posting", edit_job_path(job) %></td>
+      <!-- <td><%= link_to "Edit Posting", edit_job_path(job) %></td>
+      <td><%= link_to "Delete Posting", job, method: :delete,
+        class: 'btn btn-danger', data: {confirm: "Are you sure?"}%></td> -->
     </tr>
     <% end %>
   </tbody>
 </table>
+
+<%= paginate @jobs %>

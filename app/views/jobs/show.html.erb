@@ -1,0 +1,21 @@
+<% job = Job.find(params[:id]) %>
+
+<div class="card">
+  <div class="card-header">
+    <%= job.title %>
+  </div>
+  <div class="card-body">
+    <blockquote class="blockquote mb-0">
+      <p><%= job.description %></p>
+    </blockquote>
+  </div>
+</div>
+
+<div>
+<%= link_to "Edit Posting", edit_job_path(job), class: 'btn btn-primary' %>
+</div>
+
+<div>
+  <%= link_to "Delete Posting", job, method: :delete,
+    class: 'btn btn-danger', data: {confirm: "Are you sure?"}%>
+</div>

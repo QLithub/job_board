@@ -1,8 +1,8 @@
 class JobsController < ApplicationController
-  before_action :set_job, only: [:edit, :update]
+  before_action :set_job, only: [:edit, :update, :destroy]
 
   def index
-    @jobs = Job.all
+    @jobs = Job.page(params[:page])
   end
 
   def new
@@ -33,6 +33,11 @@ class JobsController < ApplicationController
     else
       render 'edit'
     end
+  end
+
+  def destroy
+    @job.destroy
+    redirect_to jobs_path
   end
 
   private
